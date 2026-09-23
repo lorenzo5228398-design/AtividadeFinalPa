@@ -4,12 +4,16 @@
  */
 package view;
 
+import dao.HospedeDao;
+import javax.swing.JOptionPane;
+import model.Hospede;
+
 /**
  *
  * @author aluno.saolucas
  */
 public class JframeCadastroHospede extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JframeCadastroHospede.class.getName());
 
     /**
@@ -28,6 +32,7 @@ public class JframeCadastroHospede extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -37,8 +42,8 @@ public class JframeCadastroHospede extends javax.swing.JFrame {
         txtCpf = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rdM = new javax.swing.JRadioButton();
+        rdF = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
         btnCadastrar = new javax.swing.JButton();
         lbConta = new javax.swing.JLabel();
@@ -58,9 +63,11 @@ public class JframeCadastroHospede extends javax.swing.JFrame {
 
         jLabel5.setText("Sexo");
 
-        jRadioButton1.setText("M");
+        btnGroup1.add(rdM);
+        rdM.setText("M");
 
-        jRadioButton2.setText("F");
+        btnGroup1.add(rdF);
+        rdF.setText("F");
 
         jButton1.setText("Sair");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -78,6 +85,11 @@ public class JframeCadastroHospede extends javax.swing.JFrame {
 
         lbConta.setForeground(new java.awt.Color(0, 0, 255));
         lbConta.setText("Já possui uma conta?");
+        lbConta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbContaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -98,9 +110,9 @@ public class JframeCadastroHospede extends javax.swing.JFrame {
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jRadioButton1)
+                                        .addComponent(rdM)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jRadioButton2)))
+                                        .addComponent(rdF)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(50, 50, 50))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -136,8 +148,8 @@ public class JframeCadastroHospede extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(rdM)
+                    .addComponent(rdF))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -161,12 +173,50 @@ public class JframeCadastroHospede extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarMouseClicked
-        // TODO add your handling code here:
+        try {
+
+            rdM.setActionCommand("M");
+            rdF.setActionCommand("F");
+
+            String nome = txtNome.getText();
+            String idade = txtIdade.getText();
+            String cpf = txtCpf.getText();
+            String sexo = "";
+
+            btnGroup1.add(rdM);
+            btnGroup1.add(rdF);
+
+            if (btnGroup1.getSelection() != null) {
+                sexo = btnGroup1.getSelection().getActionCommand();
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Favor, marcar a caixa de sexo.");
+                return;
+            }
+
+            int idadeConvertida = Integer.parseInt(idade);
+
+            Hospede hospede = new Hospede(nome, idadeConvertida, cpf, sexo);
+            HospedeDao dao = new HospedeDao();
+
+            dao.cadastrar(hospede);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro" + e.getMessage());
+        }
     }//GEN-LAST:event_btnCadastrarMouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void lbContaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbContaMouseClicked
+        JframeLoginHospede login = new JframeLoginHospede();
+
+        login.setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_lbContaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -195,6 +245,7 @@ public class JframeCadastroHospede extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
+    private javax.swing.ButtonGroup btnGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -202,9 +253,9 @@ public class JframeCadastroHospede extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JLabel lbConta;
+    private javax.swing.JRadioButton rdF;
+    private javax.swing.JRadioButton rdM;
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextField txtIdade;
     private javax.swing.JTextField txtNome;
