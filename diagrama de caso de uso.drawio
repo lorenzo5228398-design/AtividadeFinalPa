@@ -1,0 +1,49 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0">
+  <diagram id="diagram_uc" name="Caso de Uso">
+    <mxGraphModel dx="1414" dy="749" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="actor_recepcionista" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Recepcionista" vertex="1">
+          <mxGeometry height="60" width="30" x="60" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="actor_hospede" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Hóspede" vertex="1">
+          <mxGeometry height="60" width="30" x="60" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="system_boundary" parent="1" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" value="Sistema de Hotel" vertex="1">
+          <mxGeometry height="400" width="320" x="200" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_cadastrar_hospede" parent="system_boundary" style="ellipse;whiteSpace=wrap;html=1;" value="Cadastrar Hóspede" vertex="1">
+          <mxGeometry height="60" width="140" x="90" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_gerenciar_quartos" parent="system_boundary" style="ellipse;whiteSpace=wrap;html=1;" value="Gerenciar Quartos" vertex="1">
+          <mxGeometry height="60" width="140" x="90" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_realizar_reserva" parent="system_boundary" style="ellipse;whiteSpace=wrap;html=1;" value="Realizar Reserva" vertex="1">
+          <mxGeometry height="60" width="140" x="90" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_fazer_checkin" parent="system_boundary" style="ellipse;whiteSpace=wrap;html=1;" value="Fazer Check-in" vertex="1">
+          <mxGeometry height="60" width="140" x="90" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_rec_hospede" edge="1" parent="1" source="actor_recepcionista" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="uc_cadastrar_hospede" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_rec_quartos" edge="1" parent="1" source="actor_recepcionista" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="uc_gerenciar_quartos" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_rec_reserva" edge="1" parent="1" source="actor_recepcionista" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="uc_realizar_reserva" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_rec_checkin" edge="1" parent="1" source="actor_recepcionista" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="uc_fazer_checkin" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_hosp_reserva" edge="1" parent="1" source="actor_hospede" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" target="uc_realizar_reserva" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_hosp_checkin" edge="1" parent="1" source="actor_hospede" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" target="uc_fazer_checkin" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

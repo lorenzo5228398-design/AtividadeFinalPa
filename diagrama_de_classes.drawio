@@ -1,0 +1,91 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="class-diagram" name="Página-1">
+    <mxGraphModel dx="1414" dy="749" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeColor=none;fillColor=none;" value="&lt;b style=&quot;font-size: 24px;&quot;&gt;Diagrama de Classes - Sistema de Hotel&lt;/b&gt;" vertex="1">
+          <mxGeometry height="50" width="450" x="300" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="hospede" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1;" value="Hospede" vertex="1">
+          <mxGeometry height="300" width="280" x="40" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="hospede_attr" parent="hospede" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align: center;&quot;&gt;attributes&lt;/div&gt;- idHospede: int&lt;br&gt;- nome: String&lt;br&gt;- idade: int&lt;br&gt;- cpf: String&lt;br&gt;- sexo: String" vertex="1">
+          <mxGeometry height="94" width="280" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="hospede_div" parent="hospede" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" value="" vertex="1">
+          <mxGeometry height="8" width="280" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="hospede_ops" parent="hospede" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align: center;&quot;&gt;operations&lt;/div&gt;+ getIdHospede(): int&lt;br&gt;+ setIdHospede(id: int): void&lt;br&gt;+ getNome(): String&lt;br&gt;+ setNome(nome: String): void&lt;br&gt;+ getIdade(): int&lt;br&gt;+ setIdade(idade: int): void&lt;br&gt;+ getCpf(): String&lt;br&gt;+ setCpf(cpf: String): void&lt;br&gt;+ getSexo(): String&lt;br&gt;+ setSexo(sexo: String): void&lt;br&gt;+ registrarHospede(nome: String, idade: int, cpf: String): void" vertex="1">
+          <mxGeometry height="172" width="280" y="128" as="geometry" />
+        </mxCell>
+        <mxCell id="reserva" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1;" value="Reserva" vertex="1">
+          <mxGeometry height="270" width="260" x="400" y="135" as="geometry" />
+        </mxCell>
+        <mxCell id="reserva_attr" parent="reserva" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align: center;&quot;&gt;attributes&lt;/div&gt;- idReserva: int&lt;br&gt;- checkin: boolean&lt;br&gt;- hospede: Hospede&lt;br&gt;- quarto: Quarto" vertex="1">
+          <mxGeometry height="74" width="260" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="reserva_div" parent="reserva" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" value="" vertex="1">
+          <mxGeometry height="8" width="260" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="reserva_ops" parent="reserva" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align: center;&quot;&gt;operations&lt;/div&gt;+ getIdReserva(): int&lt;br&gt;+ setIdReserva(id: int): void&lt;br&gt;+ getHospede(): Hospede&lt;br&gt;+ setHospede(hospede: Hospede): void&lt;br&gt;+ getQuarto(): Quarto&lt;br&gt;+ setQuarto(quarto: Quarto): void&lt;br&gt;+ isCheckinFeito(): boolean&lt;br&gt;+ setCheckinFeito(feito: boolean): void" vertex="1">
+          <mxGeometry height="162" width="260" y="108" as="geometry" />
+        </mxCell>
+        <mxCell id="quarto" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1;" value="Quarto" vertex="1">
+          <mxGeometry height="210" width="300" x="810" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="quarto_attr" parent="quarto" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align: center;&quot;&gt;attributes&lt;/div&gt;- idQuarto: int&lt;br&gt;- numeroQuarto: int&lt;br&gt;- reservado: boolean" vertex="1">
+          <mxGeometry height="64" width="300" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="quarto_div" parent="quarto" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" value="" vertex="1">
+          <mxGeometry height="8" width="300" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="quarto_ops" parent="quarto" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align: center;&quot;&gt;operations&lt;/div&gt;+ getIdQuarto(): int&lt;br&gt;+ setIdQuarto(id: int): void&lt;br&gt;+ getNumeroQuarto(): int&lt;br&gt;+ setNumeroQuarto(numero: int): void&lt;br&gt;+ isReservado(): boolean&lt;br&gt;+ setReservado(reservado: boolean): void" vertex="1">
+          <mxGeometry height="112" width="300" y="98" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_hosp_reserva" edge="1" parent="1" source="hospede" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=1.5;" target="reserva" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="320" y="270" as="sourcePoint" />
+            <mxPoint x="400" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label_faz" connectable="0" parent="edge_hosp_reserva" style="edgeLabel;html=1;align=center;verticalAlign=bottom;resizable=0;points=[];" value="faz" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label_mult_1" connectable="0" parent="edge_hosp_reserva" style="edgeLabel;html=1;align=left;verticalAlign=bottom;resizable=0;points=[];" value="1" vertex="1">
+          <mxGeometry relative="1" x="-0.85" as="geometry">
+            <mxPoint y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label_mult_2" connectable="0" parent="edge_hosp_reserva" style="edgeLabel;html=1;align=right;verticalAlign=bottom;resizable=0;points=[];" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="0.85" as="geometry">
+            <mxPoint y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_reserva_quarto" edge="1" parent="1" source="reserva" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=1.5;" target="quarto" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="660" y="270" as="sourcePoint" />
+            <mxPoint x="740" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label_reservado" connectable="0" parent="edge_reserva_quarto" style="edgeLabel;html=1;align=center;verticalAlign=bottom;resizable=0;points=[];" value="é reservado para" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label_mult_3" connectable="0" parent="edge_reserva_quarto" style="edgeLabel;html=1;align=left;verticalAlign=bottom;resizable=0;points=[];" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="-0.85" as="geometry">
+            <mxPoint y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label_mult_4" connectable="0" parent="edge_reserva_quarto" style="edgeLabel;html=1;align=right;verticalAlign=bottom;resizable=0;points=[];" value="1" vertex="1">
+          <mxGeometry relative="1" x="0.85" as="geometry">
+            <mxPoint y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

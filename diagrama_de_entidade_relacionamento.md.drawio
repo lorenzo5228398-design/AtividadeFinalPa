@@ -1,0 +1,84 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0">
+  <diagram id="er_diagram" name="DER - Banco de Dados">
+    <mxGraphModel dx="1414" dy="749" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeColor=none;fillColor=none;" value="&lt;b style=&quot;font-size: 24px;&quot;&gt;DER (Banco de Dados) - Sistema de Hotel&lt;/b&gt;" vertex="1">
+          <mxGeometry height="50" width="450" x="220" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tb_hospede" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=1;strokeWidth=2;" value="Hospede" vertex="1">
+          <mxGeometry height="150" width="200" x="40" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="h_pk" parent="tb_hospede" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;html=1;" value="PK | idHospede : INT" vertex="1">
+          <mxGeometry height="24" width="200" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="h_nome" parent="tb_hospede" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;html=1;" value="nome : VARCHAR(100)" vertex="1">
+          <mxGeometry height="24" width="200" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="h_idade" parent="tb_hospede" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;html=1;" value="idade : INT" vertex="1">
+          <mxGeometry height="24" width="200" y="78" as="geometry" />
+        </mxCell>
+        <mxCell id="h_cpf" parent="tb_hospede" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;html=1;" value="cpf : VARCHAR(14)" vertex="1">
+          <mxGeometry height="24" width="200" y="102" as="geometry" />
+        </mxCell>
+        <mxCell id="h_sexo" parent="tb_hospede" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;html=1;" value="sexo : VARCHAR(20)" vertex="1">
+          <mxGeometry height="24" width="200" y="126" as="geometry" />
+        </mxCell>
+        <mxCell id="tb_reserva" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=1;strokeWidth=2;" value="Reserva" vertex="1">
+          <mxGeometry height="126" width="200" x="340" y="132" as="geometry" />
+        </mxCell>
+        <mxCell id="r_pk" parent="tb_reserva" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;html=1;" value="PK | idReserva : INT" vertex="1">
+          <mxGeometry height="24" width="200" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="r_fk1" parent="tb_reserva" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;html=1;" value="FK | idHospede : INT" vertex="1">
+          <mxGeometry height="24" width="200" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="r_fk2" parent="tb_reserva" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;html=1;" value="FK | idQuarto : INT" vertex="1">
+          <mxGeometry height="24" width="200" y="78" as="geometry" />
+        </mxCell>
+        <mxCell id="r_check" parent="tb_reserva" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;html=1;" value="checkin : BOOLEAN" vertex="1">
+          <mxGeometry height="24" width="200" y="102" as="geometry" />
+        </mxCell>
+        <mxCell id="tb_quarto" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=1;strokeWidth=2;" value="Quarto" vertex="1">
+          <mxGeometry height="102" width="200" x="640" y="144" as="geometry" />
+        </mxCell>
+        <mxCell id="q_pk" parent="tb_quarto" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;html=1;" value="PK | idQuarto : INT" vertex="1">
+          <mxGeometry height="24" width="200" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="q_num" parent="tb_quarto" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;html=1;" value="numeroQuarto : INT" vertex="1">
+          <mxGeometry height="24" width="200" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="q_res" parent="tb_quarto" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;html=1;" value="reservado : BOOLEAN" vertex="1">
+          <mxGeometry height="24" width="200" y="78" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_hospede_reserva" edge="1" parent="1" source="tb_hospede" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=2;endFill=1;startArrow=ERone;startFill=0;" target="tb_reserva" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_rel_1" connectable="0" parent="rel_hospede_reserva" style="edgeLabel;html=1;align=center;verticalAlign=bottom;resizable=0;points=[];" value="1" vertex="1">
+          <mxGeometry relative="1" x="-0.8" as="geometry">
+            <mxPoint y="-5" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_rel_N1" connectable="0" parent="rel_hospede_reserva" style="edgeLabel;html=1;align=center;verticalAlign=bottom;resizable=0;points=[];" value="N" vertex="1">
+          <mxGeometry relative="1" x="0.8" as="geometry">
+            <mxPoint y="-5" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_quarto_reserva" edge="1" parent="1" source="tb_quarto" style="endArrow=classic;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=2;endFill=1;startArrow=ERone;startFill=0;" target="tb_reserva" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_rel_2" connectable="0" parent="rel_quarto_reserva" style="edgeLabel;html=1;align=center;verticalAlign=bottom;resizable=0;points=[];" value="1" vertex="1">
+          <mxGeometry relative="1" x="-0.8" as="geometry">
+            <mxPoint y="-5" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_rel_N2" connectable="0" parent="rel_quarto_reserva" style="edgeLabel;html=1;align=center;verticalAlign=bottom;resizable=0;points=[];" value="N" vertex="1">
+          <mxGeometry relative="1" x="0.8" as="geometry">
+            <mxPoint y="-5" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
