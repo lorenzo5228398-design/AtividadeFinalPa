@@ -20,8 +20,9 @@ public class Conexao {
                       id INTEGER PRIMARY KEY AUTOINCREMENT,
                       nome TEXT NOT NULL,
                       idade INTEGER NOT NULL,
-                      cpf TEXT NOT NULL,
-                      sexo CHAR(1)
+                      cpf TEXT NOT NULL UNIQUE,
+                      sexo CHAR(1),
+                      senha TEXT NOT NULL
                                      
                                      );
                      

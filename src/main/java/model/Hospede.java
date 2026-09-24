@@ -15,15 +15,21 @@ public class Hospede {
     private int idade;
     private String cpf;
     private String sexo;
+    private String senha;
 
     public Hospede() {
     }
 
-    public Hospede(String nome, int idade, String cpf, String sexo) {
+    public Hospede(String nome, int idade, String cpf, String sexo, String senha) {
         this.nome = nome;
         this.idade = idade;
         this.cpf = cpf;
         this.sexo = sexo;
+        this.senha = senha;
+    }
+
+    public Hospede(String senha) {
+        this.senha = senha;
     }
 
     public int getId() {
@@ -66,4 +72,17 @@ public class Hospede {
         this.sexo = sexo;
     }
 
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public boolean verificarSenhasIguais(String senha, String senhaConfirmada) {
+
+        return senha.equals(senhaConfirmada);
+
+    }
 }

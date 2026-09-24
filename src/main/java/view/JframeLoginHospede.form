@@ -88,9 +88,9 @@
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txtSenha" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="51" max="32767" attributes="0"/>
+                  <EmptySpace pref="39" max="32767" attributes="0"/>
                   <Component id="lbCadastro" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnSair" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnLogar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -132,6 +132,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Logar"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnLogarMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbCadastro">
           <Properties>

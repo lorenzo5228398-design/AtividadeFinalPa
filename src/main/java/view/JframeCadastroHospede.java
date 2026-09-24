@@ -44,9 +44,13 @@ public class JframeCadastroHospede extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         rdM = new javax.swing.JRadioButton();
         rdF = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        btnSair = new javax.swing.JButton();
         btnCadastrar = new javax.swing.JButton();
         lbConta = new javax.swing.JLabel();
+        txtSenha = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtSenhaConfirmada = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,10 +73,10 @@ public class JframeCadastroHospede extends javax.swing.JFrame {
         btnGroup1.add(rdF);
         rdF.setText("F");
 
-        jButton1.setText("Sair");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnSair.setText("Sair");
+        btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btnSairMouseClicked(evt);
             }
         });
 
@@ -91,19 +95,41 @@ public class JframeCadastroHospede extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setText("Senha");
+
+        jLabel7.setText("Confirmação da senha");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnSair)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addComponent(lbConta)
+                        .addGap(37, 37, 37)
+                        .addComponent(btnCadastrar)
+                        .addGap(23, 23, 23))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNome)
-                            .addComponent(txtIdade)
-                            .addComponent(txtCpf)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtSenhaConfirmada, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSenha, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtIdade, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCpf, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3)
@@ -114,18 +140,7 @@ public class JframeCadastroHospede extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(rdF)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(50, 50, 50))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                        .addComponent(lbConta)
-                        .addGap(37, 37, 37)
-                        .addComponent(btnCadastrar)
-                        .addGap(23, 23, 23))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(50, 50, 50))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,9 +165,17 @@ public class JframeCadastroHospede extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rdM)
                     .addComponent(rdF))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtSenhaConfirmada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnSair)
                     .addComponent(btnCadastrar)
                     .addComponent(lbConta))
                 .addGap(18, 18, 18))
@@ -166,7 +189,9 @@ public class JframeCadastroHospede extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -182,6 +207,9 @@ public class JframeCadastroHospede extends javax.swing.JFrame {
             String idade = txtIdade.getText();
             String cpf = txtCpf.getText();
             String sexo = "";
+            String senha = txtSenha.getText();
+            String senhaConfirmada = txtSenhaConfirmada.getText();
+           
 
             btnGroup1.add(rdM);
             btnGroup1.add(rdF);
@@ -190,25 +218,30 @@ public class JframeCadastroHospede extends javax.swing.JFrame {
                 sexo = btnGroup1.getSelection().getActionCommand();
 
             } else {
-                JOptionPane.showMessageDialog(this, "Favor, marcar a caixa de sexo.");
+                JOptionPane.showMessageDialog(this, "Favor, informar o sexo.");
                 return;
             }
 
             int idadeConvertida = Integer.parseInt(idade);
 
-            Hospede hospede = new Hospede(nome, idadeConvertida, cpf, sexo);
+            Hospede hospede = new Hospede(nome, idadeConvertida, cpf, sexo, senha);
             HospedeDao dao = new HospedeDao();
+            if(hospede.verificarSenhasIguais(senha, senhaConfirmada)){
+            
 
-            dao.cadastrar(hospede);
+            dao.cadastrar(hospede);}
+            else{
+            JOptionPane.showMessageDialog(this, "Senha de confirmação errada ou vazia.");
+            }
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro" + e.getMessage());
         }
     }//GEN-LAST:event_btnCadastrarMouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1MouseClicked
+    private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnSairMouseClicked
 
     private void lbContaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbContaMouseClicked
         JframeLoginHospede login = new JframeLoginHospede();
@@ -246,12 +279,14 @@ public class JframeCadastroHospede extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
     private javax.swing.ButtonGroup btnGroup1;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbConta;
     private javax.swing.JRadioButton rdF;
@@ -259,5 +294,7 @@ public class JframeCadastroHospede extends javax.swing.JFrame {
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextField txtIdade;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtSenha;
+    private javax.swing.JTextField txtSenhaConfirmada;
     // End of variables declaration//GEN-END:variables
 }

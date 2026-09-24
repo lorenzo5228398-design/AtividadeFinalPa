@@ -3,12 +3,14 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import model.Hospede;
+import dao.Conexao;
+import java.sql.ResultSet;
 
 public class HospedeDao {
 
     public void cadastrar(Hospede hospede) {
 
-        String sql = "INSERT INTO hospedes(nome, idade, cpf, sexo) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO hospedes(nome, idade, cpf, sexo, senha) VALUES (?,?,?,?,?)";
 
         try (Connection conexao = Conexao.conectar(); PreparedStatement comando = conexao.prepareStatement(sql)) {
 
@@ -16,6 +18,7 @@ public class HospedeDao {
             comando.setInt(2, hospede.getIdade());
             comando.setString(3, hospede.getCpf());
             comando.setString(4, hospede.getSexo());
+            comando.setString(5, hospede.getSenha());
             comando.executeUpdate();
 
             System.out.println("Cadastro de hóspede realizada com sucesso.");
@@ -26,4 +29,29 @@ public class HospedeDao {
 
     }
 
+    public String verificarSenha(String cpf) {
+
+        String sql = """
+                     SELECT * FROM hospedes WHERE cpf =?;
+                     """;
+
+        try (Connection conexao = Conexao.conectar(); PreparedStatement comando = conexao.prepareStatement(sql)) {
+            comando.setString(1, cpf);
+
+            ResultSet resultado = comando.executeQuery();
+
+            if (resultado.next()) {
+                Hospede hosp = new Hospede(
+                        resultado.getString("senha"));
+                return hosp.getSenha();
+            } else {
+
+                System.out.println("CPF inexistente.");
+            }
+
+        } catch (Exception e) {
+            System.out.println("Erro no banco de dados." + e);
+        }
+        return null;
+    }
 }

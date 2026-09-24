@@ -4,6 +4,8 @@
  */
 package view;
 
+import dao.HospedeDao;
+
 /**
  *
  * @author aluno.saolucas
@@ -52,6 +54,11 @@ public class JframeLoginHospede extends javax.swing.JFrame {
         btnSair.setText("Sair");
 
         btnLogar.setText("Logar");
+        btnLogar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLogarMouseClicked(evt);
+            }
+        });
 
         lbCadastro.setForeground(new java.awt.Color(0, 0, 255));
         lbCadastro.setText("Não possui uma conta?");
@@ -102,9 +109,9 @@ public class JframeLoginHospede extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(lbCadastro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSair)
                     .addComponent(btnLogar))
@@ -132,6 +139,17 @@ public class JframeLoginHospede extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_lbCadastroMouseClicked
 
+    private void btnLogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogarMouseClicked
+      
+        if(conferirSenhaBanco(txtSenha.getText())){
+            
+        
+        
+        }
+        
+        
+    }//GEN-LAST:event_btnLogarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -156,6 +174,13 @@ public class JframeLoginHospede extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new JframeLoginHospede().setVisible(true));
     }
+    
+    public boolean conferirSenhaBanco(String senha){
+        HospedeDao dao = new HospedeDao();
+        return dao.verificarSenha(txtCpfLogin.getText()).equals(senha);
+    
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogar;
