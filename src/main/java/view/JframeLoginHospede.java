@@ -5,6 +5,8 @@
 package view;
 
 import dao.HospedeDao;
+import javax.swing.JOptionPane;
+import model.Sessao;
 
 /**
  *
@@ -52,6 +54,11 @@ public class JframeLoginHospede extends javax.swing.JFrame {
         jLabel3.setText("Senha");
 
         btnSair.setText("Sair");
+        btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSairMouseClicked(evt);
+            }
+        });
 
         btnLogar.setText("Logar");
         btnLogar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -140,15 +147,25 @@ public class JframeLoginHospede extends javax.swing.JFrame {
     }//GEN-LAST:event_lbCadastroMouseClicked
 
     private void btnLogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogarMouseClicked
-      
-        if(conferirSenhaBanco(txtSenha.getText())){
+        
+
+        if (conferirSenhaBanco(txtSenha.getText())) {
+            JframeCadastroReserva reserva = new JframeCadastroReserva();
             
-        
-        
+            Sessao.cpfLogado = txtCpfLogin.getText();
+            reserva.setVisible(true);
+            this.dispose();
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Login ou senha inválidos.");
         }
-        
-        
+
+
     }//GEN-LAST:event_btnLogarMouseClicked
+
+    private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnSairMouseClicked
 
     /**
      * @param args the command line arguments
@@ -174,13 +191,13 @@ public class JframeLoginHospede extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new JframeLoginHospede().setVisible(true));
     }
-    
-    public boolean conferirSenhaBanco(String senha){
+
+    public boolean conferirSenhaBanco(String senha) {
         HospedeDao dao = new HospedeDao();
         return dao.verificarSenha(txtCpfLogin.getText()).equals(senha);
-    
+
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogar;

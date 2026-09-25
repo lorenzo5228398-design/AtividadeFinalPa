@@ -14,6 +14,14 @@ public class Quarto {
         this.reservado = reservado;
     }
 
+    public Quarto(int id, int numeroQuarto, boolean reservado) {
+        this.id = id;
+        this.numeroQuarto = numeroQuarto;
+        this.reservado = reservado;
+    }
+    
+    
+
     public int getId() {
         return id;
     }

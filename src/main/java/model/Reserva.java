@@ -1,5 +1,9 @@
 package model;
 
+import dao.Conexao;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
 public class Reserva {
 
     private int id;
@@ -47,6 +51,7 @@ public class Reserva {
     public void setCheckin(boolean checkin) {
         this.checkin = checkin;
     }
+
     
 
 }

@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import model.Hospede;
 import dao.Conexao;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import view.JframeLoginHospede;
 
 public class HospedeDao {
 
@@ -30,7 +32,7 @@ public class HospedeDao {
     }
 
     public String verificarSenha(String cpf) {
-
+        JframeLoginHospede hospede = new JframeLoginHospede();
         String sql = """
                      SELECT * FROM hospedes WHERE cpf =?;
                      """;
@@ -45,7 +47,7 @@ public class HospedeDao {
                         resultado.getString("senha"));
                 return hosp.getSenha();
             } else {
-
+                JOptionPane.showMessageDialog(hospede, "Login ou senha inválidos.");
                 System.out.println("CPF inexistente.");
             }
 
@@ -54,4 +56,7 @@ public class HospedeDao {
         }
         return null;
     }
+    
+    
+    
 }
