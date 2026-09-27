@@ -1,0 +1,31 @@
+name: Pipeline de Teste e Empacotamento
+
+on:
+  push:
+    branches: [ "master", "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 1. Clonar o código do repositório
+      uses: actions/checkout@v4
+
+    - name: 2. Configurar o Java 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: 3. Compilar e Correr os Testes
+      # Este comando vai compilar, testar e gerar o teu executável com o SQLite
+      run: mvn clean package
+
+    - name: 4. Criar o pacote ZIP para Download
+      # O GitHub automaticamente comprime em ZIP qualquer ficheiro guardado nesta etapa
+      uses: actions/upload-artifact@v4
+      with:
+        name: AtividadeFinalPa-Executavel
+        path: target/*-jar-with-dependencies.jar
