@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import model.Hospede;
 import dao.Conexao;
 import java.sql.ResultSet;
-import javax.swing.JOptionPane;
-import view.JframeLoginHospede;
 
 public class HospedeDao {
 
@@ -32,7 +30,6 @@ public class HospedeDao {
     }
 
     public String verificarSenha(String cpf) {
-        JframeLoginHospede hospede = new JframeLoginHospede();
         String sql = """
                      SELECT * FROM hospedes WHERE cpf =?;
                      """;
