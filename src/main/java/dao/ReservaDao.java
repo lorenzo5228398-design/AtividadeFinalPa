@@ -9,7 +9,7 @@ public class ReservaDao {
     public void cadastrar(Reserva reserva) {
 
         String sql = """
-                     INSERT INTO reservas (id_hospede, id_id_quarto, checkin) VALUES(?,?,?);
+                     INSERT INTO reservas (id_hospede, id_quarto, checkin) VALUES(?,?,?);
                      """;
 
         try (Connection conexao = Conexao.conectar(); PreparedStatement comando = conexao.prepareStatement(sql)) {

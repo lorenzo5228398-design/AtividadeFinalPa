@@ -47,7 +47,7 @@ public class HospedeDao {
                         resultado.getString("senha"));
                 return hosp.getSenha();
             } else {
-                JOptionPane.showMessageDialog(hospede, "Login ou senha inválidos.");
+               
                 System.out.println("CPF inexistente.");
             }
 
