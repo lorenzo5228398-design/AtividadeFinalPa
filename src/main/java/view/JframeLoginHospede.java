@@ -157,7 +157,12 @@ public class JframeLoginHospede extends javax.swing.JFrame {
 
         boolean loginValido = hospedeDao.verificarSenha(cpf, senha);
 
-        if (loginValido) {
+        if (txtCpfLogin.getText().equals(adm.getUsuario()) && senha.equals(adm.getSenha())) {
+            JframeAdm admTela = new JframeAdm();
+            admTela.setVisible(true);
+            this.dispose();
+
+        } else if (loginValido) {
 
             Sessao.cpfLogado = cpf;
 
