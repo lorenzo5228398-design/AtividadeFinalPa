@@ -73,7 +73,7 @@ public class QuartoDao {
         try (Connection conexao = Conexao.conectar(); PreparedStatement comando = conexao.prepareStatement(sql)) {
 
             comando.setInt(1, quarto.getNumeroQuarto());
-            comando.setInt(2, quarto.isReservado()? 1: 0);
+            comando.setInt(2, quarto.isReservado() ? 1 : 0);
             comando.setInt(3, quarto.getId());
 
             comando.executeUpdate();
@@ -85,4 +85,26 @@ public class QuartoDao {
         }
 
     }
+
+    public void liberarQuarto(int numeroQuarto) {
+
+        String sql = """
+                UPDATE quartos SET reservado = 0 WHERE numeroQuarto = ?;
+                
+                """;
+
+        try (Connection conexao = Conexao.conectar(); PreparedStatement comando = conexao.prepareStatement(sql)) {
+
+            comando.setInt(1, numeroQuarto);
+            comando.executeUpdate();
+
+            System.out.println("Reserva de quarto atualizado com sucesso.");
+
+        } catch (Exception e) {
+
+            System.out.println("Erro ao atualizar reserva do quarto." + e);
+        }
+
+    }
+
 }

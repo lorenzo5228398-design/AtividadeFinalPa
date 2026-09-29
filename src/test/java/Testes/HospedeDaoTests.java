@@ -11,7 +11,7 @@ public class HospedeDaoTests {
     @Test
     void testeCadastrarHospedeComSucesso() {
         HospedeDao dao = new HospedeDao();
-        
+
         Hospede hospede = new Hospede();
         hospede.setNome("Ana Oliveira");
         hospede.setIdade(25);
@@ -19,52 +19,56 @@ public class HospedeDaoTests {
         hospede.setSexo("F");
         hospede.setSenha("minhaSenha123");
 
-
         assertDoesNotThrow(() -> dao.cadastrar(hospede));
     }
 
     @Test
-    void testeVerificarSenhaCpfExistente() {
+    void testeAutenticarSucesso() {
         HospedeDao dao = new HospedeDao();
-        
-     
-        String senhaRetornada = dao.verificarSenha("11122233344");
 
+        // Verifica se o login retorna TRUE quando CPF e senha estão corretos
+        boolean loginValido = dao.verificarSenha("11122233344", "minhaSenha123");
 
-        assertEquals("minhaSenha123", senhaRetornada);
+        assertTrue(loginValido, "Deveria autenticar com sucesso para CPF e senha corretos.");
     }
 
     @Test
-    void testeVerificarSenhaCpfInexistente() {
+    void testeAutenticarCpfInexistente() {
         HospedeDao dao = new HospedeDao();
-        
-      
-        String senhaRetornada = dao.verificarSenha("00000000000");
 
+        // Verifica se o login retorna FALSE para um CPF que não existe no banco
+        boolean loginValido = dao.verificarSenha("00000000000", "minhaSenha123");
 
-        assertNull(senhaRetornada);
+        assertFalse(loginValido, "Não deveria autenticar um CPF inexistente.");
+    }
+
+    @Test
+    void testeAutenticarSenhaIncorreta() {
+        HospedeDao dao = new HospedeDao();
+
+        // Verifica se o login retorna FALSE para um CPF existente com a senha errada
+        boolean loginValido = dao.verificarSenha("11122233344", "senhaErrada123");
+
+        assertFalse(loginValido, "Não deveria autenticar com a senha incorreta.");
     }
 
     @Test
     void testeCadastrarComDadosNulos() {
         HospedeDao dao = new HospedeDao();
-        
 
         Hospede hospede = new Hospede(); 
-
 
         assertDoesNotThrow(() -> dao.cadastrar(hospede));
     }
 
     @Test
-    void testeVerificarSenhaCpfNulo() {
+    void testeAutenticarComDadosNulos() {
         HospedeDao dao = new HospedeDao();
-        
-     
-        String senhaRetornada = dao.verificarSenha(null);
 
-        
-        assertNull(senhaRetornada);
+        // Verifica se o método lida com valores nulos com segurança devolvendo FALSE em vez de lançar exceções
+        boolean loginValido = dao.verificarSenha(null, null);
+
+        assertFalse(loginValido, "Autenticação com parâmetros nulos deve retornar false.");
     }
     
     

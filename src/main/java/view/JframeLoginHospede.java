@@ -149,20 +149,24 @@ public class JframeLoginHospede extends javax.swing.JFrame {
 
     private void btnLogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogarMouseClicked
         Adm adm = new Adm();
-        if (adm.getUsuario().equals(txtCpfLogin.getText()) && adm.getSenha().equals(txtSenha.getText())) {
-            JframeAdm jframeAmd = new JframeAdm();
-            jframeAmd.setVisible(true);
-            this.dispose();
 
-        } else if (conferirSenhaBanco(txtSenha.getText())) {
+        String cpf = txtCpfLogin.getText();
+        String senha = new String(txtSenha.getPassword());
+
+        HospedeDao hospedeDao = new HospedeDao();
+
+        boolean loginValido = hospedeDao.verificarSenha(cpf, senha);
+
+        if (loginValido) {
+
+            Sessao.cpfLogado = cpf;
+
             JframeCadastroReserva reserva = new JframeCadastroReserva();
-
-            Sessao.cpfLogado = txtCpfLogin.getText();
             reserva.setVisible(true);
             this.dispose();
 
         } else {
-            JOptionPane.showMessageDialog(this, "Login ou senha inválidos.");
+            JOptionPane.showMessageDialog(this, "Login ou senha inválidos." + JOptionPane.ERROR_MESSAGE);
         }
 
 
@@ -195,12 +199,6 @@ public class JframeLoginHospede extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new JframeLoginHospede().setVisible(true));
-    }
-
-    public boolean conferirSenhaBanco(String senha) {
-        HospedeDao dao = new HospedeDao();
-        return dao.verificarSenha(txtCpfLogin.getText()).equals(senha);
-
     }
 
 

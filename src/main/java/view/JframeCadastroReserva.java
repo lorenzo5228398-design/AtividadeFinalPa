@@ -179,7 +179,9 @@ public class JframeCadastroReserva extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReservarMouseClicked
 
     private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
-       this.dispose();
+       JframeLoginHospede hospede = new JframeLoginHospede();
+        hospede.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnVoltarMouseClicked
 
     /**

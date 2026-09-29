@@ -5,6 +5,7 @@
 package view;
 
 import dao.AdmDao;
+import dao.QuartoDao;
 import dao.ReservaDao;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -161,6 +162,7 @@ public class JframeAdm extends javax.swing.JFrame {
 
         }
         int idReserva = (int) tbAdm.getValueAt(linha, 0);
+        int numeroQuarto = (int) tbAdm.getValueAt(linha, 2);
 
         int resposta = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir?");
 
@@ -171,6 +173,9 @@ public class JframeAdm extends javax.swing.JFrame {
             AdmDao dao = new AdmDao();
 
             dao.deletarReserva(reserva);
+            
+            QuartoDao quartoDao = new QuartoDao();
+            quartoDao.liberarQuarto(numeroQuarto);
 
             carregarTabela();
 

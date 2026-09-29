@@ -24,36 +24,30 @@ public class HospedeDao {
             System.out.println("Cadastro de hóspede realizada com sucesso.");
 
         } catch (Exception e) {
-            System.out.println("Falha ao cadastrar hóspede." + e);
+            System.out.println("Falha ao cadastrar hóspede." + e.getMessage());
         }
 
     }
 
-    public String verificarSenha(String cpf) {
+    public boolean verificarSenha(String cpf, String senha) {
         String sql = """
-                     SELECT * FROM hospedes WHERE cpf =?;
+                     SELECT * FROM hospedes WHERE cpf =? AND senha =?;
                      """;
 
         try (Connection conexao = Conexao.conectar(); PreparedStatement comando = conexao.prepareStatement(sql)) {
             comando.setString(1, cpf);
+            comando.setString(2, senha);
 
-            ResultSet resultado = comando.executeQuery();
+            try (ResultSet resultado = comando.executeQuery()) {
+                return resultado.next();
 
-            if (resultado.next()) {
-                Hospede hosp = new Hospede(
-                        resultado.getString("senha"));
-                return hosp.getSenha();
-            } else {
-
-                System.out.println("CPF inexistente.");
             }
 
         } catch (Exception e) {
-            System.out.println("Erro no banco de dados." + e);
+            System.out.println("Erro no banco de dados." + e.getMessage());
+            return false;
         }
-        return null;
-    }
 
-   
+    }
 
 }
