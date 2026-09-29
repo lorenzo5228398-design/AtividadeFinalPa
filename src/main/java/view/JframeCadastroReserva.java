@@ -18,10 +18,11 @@ import model.Sessao;
  * @author aluno.saolucas
  */
 public class JframeCadastroReserva extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JframeCadastroReserva.class.getName());
-    
+
     private List<Quarto> quartos;
+
     /**
      * Creates new form JframeCadastroReserva
      */
@@ -88,6 +89,11 @@ public class JframeCadastroReserva extends javax.swing.JFrame {
         });
 
         btnVoltar.setText("Voltar");
+        btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVoltarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -138,29 +144,43 @@ public class JframeCadastroReserva extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnReservarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReservarMouseClicked
-       try {
-       int linhaSelecionado = tbReservas.getSelectedRow();
-       
-       if(linhaSelecionado==-1){
-           JOptionPane.showMessageDialog(this, "Por favor, selecione algum quarto para reservar.");
-           return;
-       }
-       
-       int numeroQuarto = (int) tbReservas.getValueAt(linhaSelecionado, 1);
-       String cpfUtilizado = Sessao.cpfLogado;
-       
-       ReservaDao reservaDao = new ReservaDao();
-       
-       reservaDao.reservar(cpfUtilizado, numeroQuarto);
-       
-       JOptionPane.showMessageDialog(this, "Quarto " + numeroQuarto + " reservado com sucesso!");
-       
-       carregarTabela();
-       }
-       catch (Exception e) {
-       JOptionPane.showMessageDialog(this, "Falha ao reservar quarto.");
-       }
+        try {
+            int linhaSelecionado = tbReservas.getSelectedRow();
+
+            if (linhaSelecionado == -1) {
+                JOptionPane.showMessageDialog(this, "Por favor, selecione algum quarto para reservar.");
+                return;
+            }
+            String statusQuarto = tbReservas.getValueAt(linhaSelecionado, 2).toString();
+            if (statusQuarto.equals("Reservado")) {
+                JOptionPane.showMessageDialog(this, "Este quarto já se encontra reservado! Por favor, escolha um quarto livre.");
+                return;
+            }
+
+            int numeroQuarto = (int) tbReservas.getValueAt(linhaSelecionado, 1);
+            int idQuarto = (int) tbReservas.getValueAt(linhaSelecionado, 0);
+            String cpfUtilizado = Sessao.cpfLogado;
+
+            ReservaDao reservaDao = new ReservaDao();
+
+            reservaDao.reservar(cpfUtilizado, numeroQuarto);
+
+            Quarto quartoOcupado = new Quarto(idQuarto, numeroQuarto, true);
+            QuartoDao quartoDao = new QuartoDao();
+
+            quartoDao.atualizar(quartoOcupado);
+
+            JOptionPane.showMessageDialog(this, "Quarto " + numeroQuarto + " reservado com sucesso!");
+
+            carregarTabela();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Falha ao reservar quarto.");
+        }
     }//GEN-LAST:event_btnReservarMouseClicked
+
+    private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
+       this.dispose();
+    }//GEN-LAST:event_btnVoltarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -187,35 +207,31 @@ public class JframeCadastroReserva extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> new JframeCadastroReserva().setVisible(true));
     }
 
-    public void carregarTabela(){
-    
-    DefaultTableModel tabela = (DefaultTableModel) tbReservas.getModel();
-    
-    tabela.setRowCount(0);
-    
-    QuartoDao dao = new QuartoDao();
-    
-    quartos = dao.listar();
-    
-    for(Quarto quarto: quartos){
-        String statusQuarto = quarto.isReservado() ? "Reservado": "Livre";
-        
-        tabela.addRow(new Object[]{
-          quarto.getId(),
-        quarto.getNumeroQuarto(),
-         statusQuarto
-        
-        
-        });
-        
-    
+    public void carregarTabela() {
+
+        DefaultTableModel tabela = (DefaultTableModel) tbReservas.getModel();
+
+        tabela.setRowCount(0);
+
+        QuartoDao dao = new QuartoDao();
+
+        quartos = dao.listar();
+
+        for (Quarto quarto : quartos) {
+            String statusQuarto = quarto.isReservado() ? "Reservado" : "Livre";
+
+            tabela.addRow(new Object[]{
+                quarto.getId(),
+                quarto.getNumeroQuarto(),
+                statusQuarto
+
+            });
+
+        }
+
     }
-    
-    
-    
-    }
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnReservar;
     private javax.swing.JButton btnVoltar;

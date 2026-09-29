@@ -50,7 +50,7 @@ public class QuartoDao {
                 Quarto quarto = new Quarto(
                         resultado.getInt("id"),
                         resultado.getInt("numeroQuarto"),
-                        resultado.getBoolean("reservado")
+                        resultado.getInt("reservado") == 1
                 );
 
                 quartos.add(quarto);
@@ -73,7 +73,7 @@ public class QuartoDao {
         try (Connection conexao = Conexao.conectar(); PreparedStatement comando = conexao.prepareStatement(sql)) {
 
             comando.setInt(1, quarto.getNumeroQuarto());
-            comando.setBoolean(2, quarto.isReservado());
+            comando.setInt(2, quarto.isReservado()? 1: 0);
             comando.setInt(3, quarto.getId());
 
             comando.executeUpdate();

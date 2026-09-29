@@ -1,9 +1,5 @@
 package model;
 
-import dao.Conexao;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-
 public class Reserva {
 
     private int id;
@@ -12,6 +8,13 @@ public class Reserva {
     private boolean checkin;
 
     public Reserva() {
+    }
+
+    public Reserva(int id, int idHospede, int idQuarto, boolean checkin) {
+        this.id = id;
+        this.idHospede = idHospede;
+        this.idQuarto = idQuarto;
+        this.checkin = checkin;
     }
 
     public Reserva(int idHospede, int idQuarto, boolean checkin) {
@@ -51,7 +54,5 @@ public class Reserva {
     public void setCheckin(boolean checkin) {
         this.checkin = checkin;
     }
-
-    
 
 }

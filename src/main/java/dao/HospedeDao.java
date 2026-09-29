@@ -44,7 +44,7 @@ public class HospedeDao {
                         resultado.getString("senha"));
                 return hosp.getSenha();
             } else {
-               
+
                 System.out.println("CPF inexistente.");
             }
 
@@ -53,7 +53,7 @@ public class HospedeDao {
         }
         return null;
     }
-    
-    
-    
+
+   
+
 }

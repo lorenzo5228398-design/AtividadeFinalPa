@@ -14,7 +14,7 @@ public class ReservaDaoTests {
 
         Reserva reserva = new Reserva();
         reserva.setIdHospede(1);
-        reserva.setIdQuarto(101);
+        reserva.setIdQuarto(1);
 
    
         assertDoesNotThrow(() -> dao.cadastrar(reserva));

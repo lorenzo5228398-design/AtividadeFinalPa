@@ -7,6 +7,7 @@ package view;
 import dao.HospedeDao;
 import javax.swing.JOptionPane;
 import model.Sessao;
+import model.Adm;
 
 /**
  *
@@ -147,11 +148,15 @@ public class JframeLoginHospede extends javax.swing.JFrame {
     }//GEN-LAST:event_lbCadastroMouseClicked
 
     private void btnLogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogarMouseClicked
-        
+        Adm adm = new Adm();
+        if (adm.getUsuario().equals(txtCpfLogin.getText()) && adm.getSenha().equals(txtSenha.getText())) {
+            JframeAdm jframeAmd = new JframeAdm();
+            jframeAmd.setVisible(true);
+            this.dispose();
 
-        if (conferirSenhaBanco(txtSenha.getText())) {
+        } else if (conferirSenhaBanco(txtSenha.getText())) {
             JframeCadastroReserva reserva = new JframeCadastroReserva();
-            
+
             Sessao.cpfLogado = txtCpfLogin.getText();
             reserva.setVisible(true);
             this.dispose();
