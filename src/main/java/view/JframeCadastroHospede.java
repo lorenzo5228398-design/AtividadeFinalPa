@@ -21,6 +21,11 @@ public class JframeCadastroHospede extends javax.swing.JFrame {
      */
     public JframeCadastroHospede() {
         initComponents();
+        rdM.setActionCommand("M");
+        rdF.setActionCommand("F");
+        btnGroup1.add(rdM);
+        btnGroup1.add(rdF);
+
     }
 
     /**
@@ -204,42 +209,60 @@ public class JframeCadastroHospede extends javax.swing.JFrame {
     private void btnCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarMouseClicked
         try {
 
-            rdM.setActionCommand("M");
-            rdF.setActionCommand("F");
-
             String nome = txtNome.getText();
             String idade = txtIdade.getText();
             String cpf = txtCpf.getText();
             String sexo = "";
             String senha = txtSenha.getText();
             String senhaConfirmada = txtSenhaConfirmada.getText();
-           
 
-            btnGroup1.add(rdM);
-            btnGroup1.add(rdF);
+            if (nome.isEmpty()) {
+                throw new Exception("O campo 'Nome' não pode ficar em branco.");
+            }
+            if (idade.isEmpty()) {
+                throw new Exception("O campo 'Idade' não pode ficar em branco.");
+            }
+            if (cpf.isEmpty()) {
+                throw new Exception("O campo 'CPF' não pode ficar em branco.");
+            }
+            if (senha.isEmpty()) {
+                throw new Exception("A senha não pode ficar em branco.");
+            }
 
             if (btnGroup1.getSelection() != null) {
                 sexo = btnGroup1.getSelection().getActionCommand();
 
             } else {
-                JOptionPane.showMessageDialog(this, "Favor, informar o sexo.");
-                return;
+                throw new Exception("Favor, informar o sexo.");
+
+            }
+            if (!senha.equals(senhaConfirmada)) {
+                throw new Exception("A senha de confirmação não confere.");
             }
 
-            int idadeConvertida = Integer.parseInt(idade);
+            int idadeConvertida;
+
+            try {
+                idadeConvertida = Integer.parseInt(idade);
+            } catch (NumberFormatException e) {
+                throw new Exception("Idade inválida. Digite apenas números.");
+            }
 
             Hospede hospede = new Hospede(nome, idadeConvertida, cpf, sexo, senha);
             HospedeDao dao = new HospedeDao();
-            if(hospede.verificarSenhasIguais(senha, senhaConfirmada)){
-            
-            JOptionPane.showMessageDialog(this, "Hóspede cadastrado com sucesso.");
-            dao.cadastrar(hospede);}
-            else{
-            JOptionPane.showMessageDialog(this, "Senha de confirmação errada ou vazia.");
-            }
+            dao.cadastrar(hospede);
+
+            JOptionPane.showMessageDialog(this, "Hóspede cadastrado com sucesso!");
+
+            txtNome.setText("");
+            txtIdade.setText("");
+            txtCpf.setText("");
+            txtSenha.setText("");
+            txtSenhaConfirmada.setText("");
+            btnGroup1.clearSelection();
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erro" + e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Atenção", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnCadastrarMouseClicked
 

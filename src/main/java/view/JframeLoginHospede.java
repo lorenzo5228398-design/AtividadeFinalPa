@@ -171,7 +171,7 @@ public class JframeLoginHospede extends javax.swing.JFrame {
             this.dispose();
 
         } else {
-            JOptionPane.showMessageDialog(this, "Login ou senha inválidos." + JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Login ou senha inválidos.");
         }
 
 
